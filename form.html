@@ -11,22 +11,54 @@
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="./input.css">
     <title>経費精算フォーム</title>
+
+
+    
+    <script type="text/javascript">
+        function addRow() {
+            let table = document.getElementById('myTable');
+            let newRow = table.insertRow();
+
+            let newCell = newRow.insertCell();
+            let newText = document.createTextNode(document.getElementById("inputDate").value);
+            newCell.appendChild(newText);
+
+            newCell = newRow.insertCell();
+            newText = document.createTextNode(document.getElementById("inputAmount").value);
+            newCell.appendChild(newText);
+
+            
+            newCell = newRow.insertCell();
+            newText = document.createTextNode(document.getElementById("inputRoute").value);
+            newCell.appendChild(newText);
+
+            
+            newCell = newRow.insertCell();
+            newText = document.createTextNode(document.getElementById("inputCode").value);
+            newCell.appendChild(newText);
+
+            document.getElementById("inputDate").value="";
+            document.getElementById("inputAmount").value="";
+            document.getElementById("inputRoute").value="";
+            document.getElementById("inputCode").value="";
+
+        }
+
+</script>
+
+
 </head>
+
+
+
 
 <body>
     交通費精算
-
-
-
-
-
-
-
     <div class="input-group mb-3">
         <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon1">ユーザー名</span>
         </div>
-        <input type="text" class="form-control" placeholder="email address" aria-label="Username"
+        <input type="text" class="form-control"aria-label="Username"
             aria-describedby="basic-addon1">
     </div>
 
@@ -36,15 +68,15 @@
             <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon2">日付</span>
             </div>
-            <input type="text" class="form-control" placeholder="2021/01/23" aria-label="date"
-                aria-describedby="basic-addon1" width=100px>
+            <input id="inputDate" type="text" class="form-control"aria-label="date"
+                aria-describedby="basic-addon1" width=100px >
         </div>
 
         <div class="input-group mb-3">
             <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon2">金額</span>
             </div>
-            <input type="text" class="form-control" placeholder="550" aria-label="date" aria-describedby="basic-addon1"
+            <input id="inputAmount" type="text" class="form-control" aria-label="date" aria-describedby="basic-addon1"
                 width=100px>
         </div>
 
@@ -52,12 +84,30 @@
             <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon2">経路</span>
             </div>
-            <input type="text" class="form-control" placeholder="東京 - 海浜幕張" aria-label="date"
+            <input id="inputRoute" type="text" class="form-control"  aria-label="date"
                 aria-describedby="basic-addon1" width=100px>
         </div>
 
-        <button type="button" class="btn btn-primary btn-sm">+</button>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon2">精算コード</span>
+            </div>
+            <input id="inputCode" type="text" class="form-control" aria-label="date"
+                aria-describedby="basic-addon1" width=100px>
+        </div>
 
+        <button id="addButton" type="button" class="btn btn-primary btn-sm" onClick="addRow()">+</button>
+
+
+    </div>
+    <table id="myTable" class=" table order-list">
+        <tr>
+            <th style="width: 16.66%">日付</th>
+            <th style="width: 25%">金額</th>
+            <th style="width: 25%">経路</th>
+            <th style="width: 25%">精算コード</th>
+        </tr>
+    </table>
     </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -70,6 +120,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+
 </body>
 
 </html>
